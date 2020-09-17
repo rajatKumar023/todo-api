@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const {ObjectId} = require('mongodb');
+const _ = require('lodash');
 
 const {mongoose} = require('./db/mongoose');
 const {User} = require('./models/user');
@@ -64,8 +65,65 @@ app.delete('/todos/:id', (req, res) => {
     });
 });
 
+app.put('/todos/:id', (req, res) => {
+    const id = req.params.id;
+    if (!ObjectId.isValid(id)) {
+        return res.status(404).send();
+    }
+    const body = _.pick(req.body, ['text', 'completed']);
+
+    if (_.isBoolean(body.completed) && body.completed) {
+        body.completedAt = new Date().getTime();
+    } else {
+        body.completedAt = null;
+    }
+
+    Todo.findByIdAndUpdate(id, {$set: body}, {new: true}).then((todo) => {
+        if (!todo) {
+            return res.status(404).send();
+        }
+
+        res.send({todo});
+    }).catch((e) => {
+        return res.status(400).send();
+    });
+});
+
+app.post('/users', (req, res) => {
+    const body = _.pick(req.body, ['email', 'password']);
+    const user = User(body);
+
+    user.save().then(() => {
+        return user.generateAuthToken();
+    }).then((token) => {
+        res.header('x-auth', token).send(user);
+    }).catch((e) => {
+        res.status(400).send(e);
+    });
+});
+
+app.get('/users', (req, res) => {
+    User.find().then((users) => {
+        res.send({users});
+    }).catch((e) => {
+        res.send(400).send();
+    });
+});
+
 app.listen(port, () => {
     console.log(`Started on port ${port}`);
 });
+
+
+
+
+
+
+
+
+
+
+
+
 
 
