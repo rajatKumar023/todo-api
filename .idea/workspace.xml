@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5d4268d-e13b-4f8a-9479-6ce7b55bc67a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/server/middleware/authenticate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/config/config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/db/mongoose.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/db/mongoose.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/todo.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/todo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,7 +54,9 @@
       <updated>1600260593665</updated>
       <workItem from="1600260595061" duration="4915000" />
       <workItem from="1600268524725" duration="3116000" />
-      <workItem from="1600317427855" duration="7740000" />
+      <workItem from="1600317427855" duration="8145000" />
+      <workItem from="1600440398882" duration="13000" />
+      <workItem from="1600596269782" duration="3063000" />
     </task>
     <servers />
   </component>
@@ -68,9 +68,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1600272768116" />
-    <state x="430" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1600324344748">
+    <state x="430" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1600596290535">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="430" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1600324344748" />
+    <state x="430" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1600596290535" />
   </component>
 </project>
