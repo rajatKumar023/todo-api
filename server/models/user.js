@@ -16,6 +16,28 @@ const UserSchema = new mongoose.Schema({
             message: '{VALUE} is not a valid email',
         }
     },
+    name: {
+        type: String,
+        required: true,
+        trim: true,
+        minlength: 2,
+    },
+    bio: {
+        type: String,
+    },
+    phone: {
+        type: String,
+        required: true,
+        trim: true,
+        minlength: 10,
+        validate: {
+            validator: validator.isMobilePhone,
+            message: '{VALUE} is not a valid phone number',
+        }
+    },
+    profileImage: {
+        type: String,
+    },
     password: {
         type: String,
         required: true,
@@ -37,7 +59,7 @@ UserSchema.methods.toJSON = function () {
     const user = this;
     const userObject = user.toObject();
 
-    return _.pick(userObject, ['_id', 'email']);
+    return _.pick(userObject, ['_id', 'email', 'name', 'bio', 'phone', 'profileImage']);
 };
 
 UserSchema.methods.generateAuthToken = function () {

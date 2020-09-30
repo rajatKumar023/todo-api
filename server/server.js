@@ -101,7 +101,7 @@ app.put('/todos/:id', authenticate, (req, res) => {
 });
 
 app.post('/users', (req, res) => {
-    const body = _.pick(req.body, ['email', 'password']);
+    const body = _.pick(req.body, ['email', 'password', 'name', 'bio', 'phone', 'profileImage']);
     const user = User(body);
 
     user.save().then(() => {
