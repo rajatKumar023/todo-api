@@ -129,6 +129,53 @@ app.post('/users/login', (req, res) => {
     });
 });
 
+app.get('/users/:id', (req, res) => {
+    const id = req.params.id;
+    if (!ObjectId.isValid(id)) {
+        return res.status(404).send();
+    }
+
+    User.findOne({
+        _id: id,
+    }).then((user) => {
+        if (!user) {
+            return res.status(404).send();
+        }
+
+        res.send({user});
+    }).catch((e) => {
+        res.status(400).send();
+    });
+});
+
+app.get('/users', (req, res) => {
+    User.find().then((users) => {
+        res.send({users});
+    }, (e) => {
+        res.status(400).send(e);
+    });
+});
+
+app.delete('/users/:id', (req, res) => {
+    const id = req.params.id;
+    if (!ObjectId.isValid(id)) {
+        return res.status(404).send();
+    }
+
+    User.findOneAndRemove({
+        _id: id,
+    }).then((user) => {
+        if (!user) {
+            return res.status(404).send();
+        }
+
+        res.send(user);
+    }).catch((e) => {
+        res.status(400).send();
+    });
+});
+
+
 app.listen(port, () => {
     console.log(`Started on port ${port}`);
 });
