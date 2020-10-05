@@ -129,6 +129,25 @@ app.post('/users/login', (req, res) => {
     });
 });
 
+app.get('/users/mobile/:mobile', (req, res) => {
+    const mobile = req.params.mobile;
+    if (!mobile.isNumber) {
+        return res.status(404).send();
+    }
+
+    User.findOne({
+        phone: mobile,
+    }).then((user) => {
+        if (!user) {
+            return res.status(404).send();
+        }
+
+        res.send({user});
+    }).catch((e) => {
+        res.status(400).send();
+    });
+});
+
 app.get('/users/:id', (req, res) => {
     const id = req.params.id;
     if (!ObjectId.isValid(id)) {
