@@ -131,7 +131,7 @@ app.post('/users/login', (req, res) => {
 
 app.get('/users/mobile/:id', (req, res) => {
     const mobile = req.params.id;
-    if (!mobile.isNumber) {
+    if (!mobile.isMobilePhone) {
         return res.status(404).send();
     }
 
