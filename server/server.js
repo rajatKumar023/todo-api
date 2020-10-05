@@ -129,8 +129,8 @@ app.post('/users/login', (req, res) => {
     });
 });
 
-app.get('/users/mobile/:mobile', (req, res) => {
-    const mobile = req.params.mobile;
+app.get('/users/mobile/:id', (req, res) => {
+    const mobile = req.params.id;
     if (!mobile.isNumber) {
         return res.status(404).send();
     }
